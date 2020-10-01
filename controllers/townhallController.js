@@ -7,9 +7,10 @@ class TownhallController {
     const {
       townhallNames
     } = req.body;
+    console.log(req._userId)
     const townhall = new Townhall({
       _userId: req._userId,
-      townhallNames: townhallNames,
+      townhallNames,
       invadecooldown: 240,
       health: 10,
       gold: 20,
@@ -17,10 +18,13 @@ class TownhallController {
       energy: 10
     })
     townhall.save()
-    .then(function(result){
-      res.status(201).send({message: 'succes welcome', data: result})
-    })
-    .catch(next)
+      .then(function (result) {
+        res.status(201).send({
+          message: 'succes welcome',
+          data: result.townhallNames
+        })
+      })
+      .catch(next)
   }
 
 
