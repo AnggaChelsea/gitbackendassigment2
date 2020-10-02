@@ -1,9 +1,7 @@
 const Townhall = require('../models/Townhall');
 
 class TownhallController {
-
   static create(req, res, next) {
-    console.log(req._userId)
     const {
       townhallNames
     } = req.body;
