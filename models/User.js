@@ -17,7 +17,7 @@ const userSchema = new Schema({
   },
   townhallNames: {
     type: String,
-    default:'Townhall name'
+    required:true
   },
   resources: {
     type: Schema.Types.ObjectId,
