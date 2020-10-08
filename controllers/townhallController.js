@@ -77,18 +77,18 @@ class TownhallController {
   //     .catch(next);
   // }
 
-  // static put(req, res, next) {
-  //   const { townhall,  } = req.body;
-  //   Townhall.findOne({ _id: req.params.id })
-  //     .then((townhall) => {
-  //       townhall.townhall = townhall;
-  //       return townhall.save();
-  //     })
-  //     .then((townhall) => {
-  //       res.status(200).json({ succes: true, data: townhall });
-  //     })
-  //     .catch(next);
-  // }
+  static put(req, res, next) {
+    const { townhallNames,  } = req.body;
+    Townhall.findOne({ _id: req.params.id })
+      .then((townhallNames) => {
+        townhallNames.townhallNames = townhallNames;
+        return townhallNames.save();
+      })
+      .then((townhall) => {
+        res.status(200).json({ succes: true, data: townhall });
+      })
+      .catch(next);
+  }
 
   // static delete(req, res, next) {
   //   Townhall.findOne({ _id: req.params.id })

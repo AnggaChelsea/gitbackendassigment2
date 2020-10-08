@@ -1,8 +1,24 @@
-const User = require('../models/User');
+const resource = require('../models/Resource');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
 class UserController {
+  //!get User
+  static getUser(req, res, next) {
+    User.findOne({
+        _id: req.params.id
+      })
+      .then((users) => {
+        res.status(200).json({
+          succes: true,
+          data: {username: users.username, townhallNames: users.townhallNames}
+        });
+      })
+      .catch(next);
+  }
+
+  //!create user
   static register(req, res, next) {
     const {
       username,
@@ -23,13 +39,14 @@ class UserController {
           data: {
             _id: user._id,
             username: user.username,
-            email: user.email
+            email: user.email,
           }
         });
       })
       .catch(next);
   }
 
+  //!login users
   static login(req, res, next) {
     const {
       email,
@@ -52,6 +69,28 @@ class UserController {
         };
       })
       .catch(next);
+  }
+
+  //!Edit users Townhall
+  static put(req, res, next) {
+      ({
+        townhallNames
+      } = req.body);
+
+      User.findOne({
+          _id: req.params.id
+        })
+        .then(users => {
+          users.townhallNames = townhallNames;
+          return users.save();
+        })
+        .then((users) => {
+          res.status(200).json({
+            success: true,
+            data: users
+          })
+        })
+        .catch(next);
   }
 
   static deleteUser(req, res, next) {
