@@ -1,55 +1,52 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const Resource = require('./Resource')
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
-
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true
   },
   email: {
     type: String,
-    trim: true,
-    lowercase: true,
-    unique: true,
-    validate: {
-      validator: function (v) {
-        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
-      },
-      message: "Please enter a valid email"
-    },
-    required: [true, "Email required"]
+    required: true,
   },
   password: {
     type: String,
+    min: [6, 'Too few pass'],
+    max: 12,
     required: true
   },
-  townhallNames: {
-    type: String,
-    required: true
+  resources: {
+    golds: {
+      type: Number,
+      default: 100
+    },
+    foods: {
+      type: Number,
+      default: 100
+    },
+    soldiers: {
+      type: Number,
+      default: 0
+    },
   },
-
 });
 
-userSchema.pre('save', function (next) {
+//use schema pre for save register
+userSchema.pre('save', function (next){
   User.findOne({
       email: this.email
     })
     .then((user) => {
-      if (user) next({
-        name: 'ALREADY_EXISTS'
-      });
-      else {
-        const salt = bcrypt.genSaltSync(10);
-        this.password = bcrypt.hashSync(this.password, salt);
+      if (user) {
+        next({name: 'EMAIL_ALREADY_EXISTS'});
+      } else {
+        this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
         next();
       }
     })
-    .catch((e) => next({
-      name: 'MONGOOSE_ERROR'
-    }));
+    .catch((e) => next('MONGOOSE_ERROR'));
 });
 
 const User = mongoose.model('User', userSchema);

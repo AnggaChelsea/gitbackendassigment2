@@ -1,0 +1,72 @@
+### Register User 1
+POST http://localhost:2000/users/register
+Content-Type: application/json
+
+{
+  "username":"aga",
+  "email": "angga1@yahoo.com",
+  "password": "pand12"
+}
+
+### Register User 2
+POST http://localhost:2000/users/register
+Content-Type: application/json
+
+{
+  "username":"angga1",
+  "email": "angga@yahoo.com",
+  "password": "pand12"
+}
+
+### Login User 1
+POST http://localhost:2000/users/login
+Content-Type: application/json
+
+{
+  "username": "aga",
+  "password": "pand12"
+}
+
+### Login User 2
+POST http://localhost:2000/users/login
+Content-Type: application/json
+
+{
+  "username": "angga1",
+  "password": "pand12"
+}
+
+
+### List Townhall
+GET http://localhost:2000/
+Content-Type: application/json
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmOWI5NGRkYWZkMTMzODRkM2MxM2MiLCJpYXQiOjE2MDIyMDE1MjJ9.Q3ijdrkf3NL8wA5emcsUMgCLfFTOHZrc1Z9oG8iiIq8
+
+### POST Market
+POST http://localhost:4000/markets/
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmOWJhNmRkYWZkMTMzODRkM2MxM2UiLCJpYXQiOjE2MDIyMDUwNTJ9.TOxV8madFgSZvSIoduu5aimWRXGjkWt-1_MG2JTcr7o
+
+{
+ 
+}
+
+### GET Market
+GET http://localhost:2000/markets
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmMWQxZjcwYTdlYjdjZjgxYjllMDciLCJpYXQiOjE2MDIxOTU3MDV9.XXwEJ6tDRXPrPRYg5hUg4cptBgLPN8ubgar9PnxOj50
+
+### PUT Market
+PUT http://localhost:2000/markets/5f6db1c543bf8b2a2b0981ec
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjYjFmZDFkNDhmY2QiLCJpYXQiOjE2MDEwMjM3NjF9._nK8zthuQmx_KZbyUdG_CXB8N8k3gDbfY0zN4QPnfsw
+
+{
+  "title": "edited Todo title",
+  "description": "edited"
+}
+
+### DELETE Market
+DELETE http://localhost:2000/markets/5f6db1c543bf8b2a2b0981ec
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjYjFmZDFkNDhmY2QiLCJpYXQiOjE2MDEwMjM3NjF9._nK8zthuQmx_KZbyUdG_CXB8N8k3gDbfY0zN4QPnfsw

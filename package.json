@@ -1,0 +1,28 @@
+{
+  "name": "jumat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.7",
+    "mongoose-unique-validator": "^2.0.3",
+    "mquery": "^3.2.2",
+    "nodemon": "^2.0.4",
+    "typescript": "^4.0.3"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}

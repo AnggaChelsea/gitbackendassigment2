@@ -1,116 +1,53 @@
-const resource = require('../models/Resource');
+const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
 
 class UserController {
-  //!get User
-  static getUser(req, res, next) {
-    User.findOne({
-        _id: req.params.id
-      })
-      .then((users) => {
-        res.status(200).json({
-          succes: true,
-          data: {username: users.username, townhallNames: users.townhallNames}
-        });
-      })
-      .catch(next);
-  }
-
-  //!create user
   static register(req, res, next) {
     const {
       username,
       email,
-      password,
-      townhallNames
+      password
     } = req.body;
     const user = new User({
       username,
       email,
       password,
-      townhallNames,
-    });
+    })
+    console.log(user)
     user.save()
       .then((user) => {
         res.status(201).json({
-          success: true,
-          data: {
-            _id: user._id,
-            username: user.username,
-            email: user.email,
-          }
+          message: `welcome  ${user.username} hope enjoy play`,
         });
       })
       .catch(next);
   }
 
-  //!login users
+  //login menggunakan Username
   static login(req, res, next) {
     const {
-      email,
+      username,
       password
     } = req.body;
     User.findOne({
-        email
+        username
       })
       .then((user) => {
         if (user && bcrypt.compareSync(password, user.password)) {
           const access_token = jwt.sign({
-            id: user._id
-          }, 'SALT_ACADEMY');
+            _id: user._id
+          }, 'ANGGALESMANA');
           res.status(200).json({
             success: true,
             access_token
           });
-        } else throw {
-          name: 'LOGIN_FAIL'
-        };
+        } else {
+          throw { name: 'LOGIN_FAIL'}
+        }
       })
       .catch(next);
   }
-
-  //!Edit users Townhall
-  static put(req, res, next) {
-      ({
-        townhallNames
-      } = req.body);
-
-      User.findOne({
-          _id: req.params.id
-        })
-        .then(users => {
-          users.townhallNames = townhallNames;
-          return users.save();
-        })
-        .then((users) => {
-          res.status(200).json({
-            success: true,
-            data: users
-          })
-        })
-        .catch(next);
-  }
-
-  static deleteUser(req, res, next) {
-    User.findOne({
-        _id: req.params.id
-      })
-      .then((user) => {
-        return user.remove();
-      })
-      .then((user) => {
-        res.status(200).json({
-          success: true,
-          data: {
-            deleted: user
-          }
-        });
-      })
-      .catch(next);
-  }
-
 }
 
 module.exports = UserController;

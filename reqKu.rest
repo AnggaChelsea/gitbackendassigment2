@@ -1,0 +1,38 @@
+
+
+### Login User 2
+POST http://localhost:2000/users/login
+Content-Type: application/json
+
+{
+  "email": "user1@example.com",
+  "password": "passwold"
+}
+
+### DELETE user
+DELETE http://localhost:4000/users/5f7a933dce6a2a2ca80e04f3
+Content-Type: application/json
+
+
+
+### PUT Edit townhallNames
+PUT http://localhost:2000/users/5f7af5060b5b1d760ec40a5e
+Content-Type: application/json
+access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmN2FmNTA2MGI1YjFkNzYwZWM0MGE1ZSIsImlhdCI6MTYwMTg5ODA0Nn0.c_QReX-_37BIwTzeidPVwLSRqZcuaD8fYSPKz-3N4Mw"
+
+{
+  "townhallNames":"diUbawh",
+}
+
+
+### GET power
+GET http://localhost:2000/resource/create
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmN2FmNTA2MGI1YjFkNzYwZWM0MGE1ZSIsImlhdCI6MTYwMTg5ODA0Nn0.c_QReX-_37BIwTzeidPVwLSRqZcuaD8fYSPKz-3N4Mw
+
+{
+#  "townhall":"jadiatuh",
+#  "health":20,
+}
+
+
