@@ -3,8 +3,8 @@ POST http://localhost:2000/users/register
 Content-Type: application/json
 
 {
-  "username":"aga",
-  "email": "angga1@yahoo.com",
+  "username":"aga2",
+  "email": "angga2@yahoo.com",
   "password": "pand12"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:2000/users/register
 Content-Type: application/json
 
 {
-  "username":"angga1",
+  "username":"aga",
   "email": "angga@yahoo.com",
   "password": "pand12"
 }
@@ -23,7 +23,7 @@ POST http://localhost:2000/users/login
 Content-Type: application/json
 
 {
-  "username": "aga",
+  "username": "aga2",
   "password": "pand12"
 }
 
@@ -40,12 +40,12 @@ Content-Type: application/json
 ### List Townhall
 GET http://localhost:2000/
 Content-Type: application/json
-access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmOWI5NGRkYWZkMTMzODRkM2MxM2MiLCJpYXQiOjE2MDIyMDE1MjJ9.Q3ijdrkf3NL8wA5emcsUMgCLfFTOHZrc1Z9oG8iiIq8
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmOWI5NGRkYWZkMTMzODRkM2MxM2MiLCJpYXQiOjE2MDIyMzg3Nzl9.BzhukdjOe_Z_2cB1c5rvVTXzjMXex6SdKU9EIuPPgDk
 
 ### POST Market
 POST http://localhost:4000/markets/
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmOWJhNmRkYWZkMTMzODRkM2MxM2UiLCJpYXQiOjE2MDIyMDUwNTJ9.TOxV8madFgSZvSIoduu5aimWRXGjkWt-1_MG2JTcr7o
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmOWI5NGRkYWZkMTMzODRkM2MxM2MiLCJpYXQiOjE2MDIyMzg3Nzl9.BzhukdjOe_Z_2cB1c5rvVTXzjMXex6SdKU9EIuPPgDk
 
 {
  

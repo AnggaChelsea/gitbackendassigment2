@@ -4,10 +4,11 @@ module.exports = (req, res, next) => {
   const { access_token } = req.headers;
   if (access_token) {
     jwt.verify(access_token, 'ANGGALESMANA', (err, decoded) => {
+      console.log(decoded)
       if (err) next({ name: 'INVALID_TOKEN' });
       else {
         console.log(decoded)
-        req._userId = decoded.id;
+        req._userId = decoded._id;
         next();
       }
     });

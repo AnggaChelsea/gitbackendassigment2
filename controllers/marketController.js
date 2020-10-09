@@ -11,11 +11,13 @@ class MarketController {
   }
 
   static post(req, res, next) {
+    console.log(req._id)
     User.findById({_userId: req._id})
       .then((user) => {
         if (user) {
           if (user.resources.golds >= 30 && user.resources.foods >= 10) {
             const resources = user.resources;
+            console.log(resources)
             resources.golds -= 30;
             resources.foods -= 10;
             return User.updateOne({ _id: req._id }, { resources: resources });
@@ -36,8 +38,7 @@ class MarketController {
       })
       .catch(next);
   }
-
-  // Get Market, belum memperlihatkan jumlah golds yang digenerate!
+  
   static get(req, res, next) {
     const { id } = req.params;
     Market.findById(id)
