@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     })
     .then((market) => {
       if (market) {
-        if (market._userId.toString() === req._id) {
+        if (market._userId.toString() === req._userId) {
           next();
         } else {
           throw 'FORBIDDEN';

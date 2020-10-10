@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
      
       if (err) next({ name: 'INVALID_TOKEN' });
       else {
-        console.log(decoded)
+        // console.log(decoded)
         req._userId = decoded._id;
         next();
       }

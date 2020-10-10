@@ -6,7 +6,9 @@ const marketSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-  name: String,
+  name: {
+    type: String
+  },
   lastCollected: {
     type: Number,
     default: Date.now(),
