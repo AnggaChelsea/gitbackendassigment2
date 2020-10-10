@@ -3,7 +3,7 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-  "username":"angga",
+  "username":"angga2",
   "email": "anga@yahoo.com",
   "password": "angga"
 }
@@ -23,7 +23,7 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
-  "username": "angga",
+  "username": "angga2",
   "password": "angga"
 }
 
@@ -46,7 +46,7 @@ access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMT
 ### GET List Market
 GET http://localhost:5000/markets
 Content-Type: application/json
-access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjU2NDJ9.syV33vuWnDy5WwI_B3PCvsOaKw-bz5gzGFBg164yu6M
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
 
 ### POST Market
 POST http://localhost:5000/barrack/
@@ -54,7 +54,7 @@ Content-Type: application/json
 access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
 
 {
-  "nameBarrack": "Market001"
+  "nameBarrack": "Market003"
 }
 
 ### POST Market
@@ -69,7 +69,7 @@ access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMT
 ### GET by id Market
 GET http://localhost:5000/markets/5f8187315f65f12464244081
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjU2NDJ9.syV33vuWnDy5WwI_B3PCvsOaKw-bz5gzGFBg164yu6M
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxOWU5MDQ2NGJmZjJiMWZmZjIwNjciLCJpYXQiOjE2MDIzMzAyNjN9.-0WQYsfQ0AZHeMOPWnqatQ4t8Za68iqFJkuZS6l4V6M
 
 ### PUT Market
 PUT http://localhost:5000/markets/5f8187315f65f12464244081

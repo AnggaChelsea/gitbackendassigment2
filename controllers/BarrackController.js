@@ -1,3 +1,4 @@
+
 const Barrack = require('../models/Barrack');
 const User = require('../models/User');
 
@@ -42,5 +43,13 @@ class BarrackController {
       })
       .catch(next);
   }
+
+  static get(req,res,next){
+    const {id} = req.params;
+    
+  }
+
 }
+
+
 module.exports = BarrackController;
