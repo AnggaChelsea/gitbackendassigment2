@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', function (next) {
-  User.findOne({ email: this.email })
+  User.findOne({ username: this.username, email: this.email })
     .then((user) => {
       if (user) {
         next({ name: 'EMAIL_ALREADY_EXISTS' });

@@ -8,11 +8,12 @@ const barrackSchema = new mongoose.Schema({
       ref: 'User',
       required: true,
     },
-    name: String,
+    nameBarrack: String,
     lastCollected: {
       type: Number,
       default: Date.now(),
     },
   });
   
-  module.exports = mongoose.model('Market', barrackSchema);
+ const Barrack = mongoose.model('Barrack', barrackSchema);
+ module.exports = Barrack;

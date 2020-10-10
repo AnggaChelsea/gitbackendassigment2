@@ -1,38 +1,78 @@
+### Register User 1
+POST http://localhost:5000/users/register
+Content-Type: application/json
 
+{
+  "username":"aga2221",
+  "email": "anga2321@yahoo.com",
+  "password": "pand12"
+}
+
+### Register User 2
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+  "username":"aga111",
+  "email": "angga111@yahoo.com",
+  "password": "pand12"
+}
+
+### Login User 1
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+  "username": "aga111",
+  "password": "pand12"
+}
 
 ### Login User 2
-POST http://localhost:2000/users/login
+POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
-  "email": "user1@example.com",
-  "password": "passwold"
+  "username": "angga1",
+  "password": "pand12"
 }
 
-### DELETE user
-DELETE http://localhost:4000/users/5f7a933dce6a2a2ca80e04f3
+### GET Townhall
+GET http://localhost:5000/
 Content-Type: application/json
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxNWI5NjkyMjVkNDM1YzU0YzEzNWIiLCJpYXQiOjE2MDIzMTMxMjN9.d87BUYJmdrLBa7R8RXwEluPqeHq7ju8U5P_0bx1Tsys
 
+#================= MARKET ========================
 
-
-### PUT Edit townhallNames
-PUT http://localhost:2000/users/5f7af5060b5b1d760ec40a5e
+### GET List Market
+GET http://localhost:5000/markets/5f815b969225d435c54c135b
 Content-Type: application/json
-access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmN2FmNTA2MGI1YjFkNzYwZWM0MGE1ZSIsImlhdCI6MTYwMTg5ODA0Nn0.c_QReX-_37BIwTzeidPVwLSRqZcuaD8fYSPKz-3N4Mw"
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxNWI5NjkyMjVkNDM1YzU0YzEzNWIiLCJpYXQiOjE2MDIzMTMxMjN9.d87BUYJmdrLBa7R8RXwEluPqeHq7ju8U5P_0bx1Tsys
+
+### POST Market
+POST http://localhost:5000/markets/
+Content-Type: application/json
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxNWI5NjkyMjVkNDM1YzU0YzEzNWIiLCJpYXQiOjE2MDIzMTMxMjN9.d87BUYJmdrLBa7R8RXwEluPqeHq7ju8U5P_0bx1Tsys
 
 {
-  "townhallNames":"diUbawh",
+  "name": "Market001"
 }
 
-
-### GET power
-GET http://localhost:2000/resource/create
+### GET by id Market
+GET http://localhost:5000/markets/
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmN2FmNTA2MGI1YjFkNzYwZWM0MGE1ZSIsImlhdCI6MTYwMTg5ODA0Nn0.c_QReX-_37BIwTzeidPVwLSRqZcuaD8fYSPKz-3N4Mw
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxNWI5NjkyMjVkNDM1YzU0YzEzNWIiLCJpYXQiOjE2MDIzMTMxMjN9.d87BUYJmdrLBa7R8RXwEluPqeHq7ju8U5P_0bx1Tsys
+
+### PUT Market
+PUT http://localhost:5000/markets/:id
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjYjFmZDFkNDhmY2QiLCJpYXQiOjE2MDEwMjM3NjF9._nK8zthuQmx_KZbyUdG_CXB8N8k3gDbfY0zN4QPnfsw
 
 {
-#  "townhall":"jadiatuh",
-#  "health":20,
+  "title": "edited Todo title",
+  "description": "edited"
 }
 
-
+### DELETE Market
+DELETE http://localhost:5000/markets/:id
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjYjFmZDFkNDhmY2QiLCJpYXQiOjE2MDEwMjM3NjF9._nK8zthuQmx_KZbyUdG_CXB8N8k3gDbfY0zN4QPnfsw

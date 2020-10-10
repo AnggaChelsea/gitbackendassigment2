@@ -2,9 +2,9 @@ const Market = require('../models/Marketuser');
 const User = require('../models/User');
 
 class MarketController {
-  static list(req, res, next) {
-    Market.find({
-        _userId: req._id
+  static listMarket(req, res, next) {
+    Market.findById({
+        _id: req._userId
       })
       .then((markets) => {
         res.status(200).json({
@@ -19,12 +19,11 @@ class MarketController {
   static post(req, res, next) {
     // console.log(req._id)
     User.findById({
-        _userId: req._userId
+        _id: req._userId
       })
       .then((user) => {
         console.log(user)
         if (user) {
-          console.log(user)
           if (user.resources.golds >= 30 && user.resources.foods >= 10) {
             const resources = user.resources;
             resources.golds -= 30;
@@ -64,7 +63,7 @@ class MarketController {
     const {
       id
     } = req.params;
-    Market.findById(id)
+    Market.findOne({_id: id})
       .then((market) => {
         if (market) {
           const golds = Math.floor((Date.now() - market.lastCollected) / 60000);

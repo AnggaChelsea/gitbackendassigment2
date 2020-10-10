@@ -3,9 +3,9 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-  "username":"aga21",
-  "email": "angga21@yahoo.com",
-  "password": "pand12"
+  "username":"angga",
+  "email": "anga@yahoo.com",
+  "password": "angga"
 }
 
 ### Register User 2
@@ -13,9 +13,9 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-  "username":"aga11",
-  "email": "angga@yahoo.com",
-  "password": "pand12"
+  "username":"aga111",
+  "email": "angga111@yahoo.com",
+  "password": "angga"
 }
 
 ### Login User 1
@@ -23,8 +23,8 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
-  "username": "aga21",
-  "password": "pand12"
+  "username": "angga",
+  "password": "angga"
 }
 
 ### Login User 2
@@ -32,40 +32,52 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
-  "username": "angga1",
-  "password": "pand12"
+  "username": "angga",
+  "password": "angga"
 }
 
+### GET Townhall
+GET http://localhost:5000/
+Content-Type: application/json
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjU2NDJ9.syV33vuWnDy5WwI_B3PCvsOaKw-bz5gzGFBg164yu6M
+
 #================= MARKET ========================
-//bang are u there?
 
 ### GET List Market
-GET http://localhost:5000/markets/
+GET http://localhost:5000/markets
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgwOTAxNWI3OGM4YjkxODgyNTUzMmIiLCJpYXQiOjE2MDIyOTYzMDR9.2eZKlv9We94AEg7UWxL_S9m1IFK218n1G-ScI1X2Jqc
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjU2NDJ9.syV33vuWnDy5WwI_B3PCvsOaKw-bz5gzGFBg164yu6M
+
+### POST Market
+POST http://localhost:5000/barrack/
+Content-Type: application/json
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
+
+{
+  "nameBarrack": "Market001"
+}
 
 ### POST Market
 POST http://localhost:5000/markets/
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgwOTAxNWI3OGM4YjkxODgyNTUzMmIiLCJpYXQiOjE2MDIyOTYzMDR9.2eZKlv9We94AEg7UWxL_S9m1IFK218n1G-ScI1X2Jqc
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
 
 {
   "name": "Market001"
 }
 
 ### GET by id Market
-GET http://localhost:5000/markets/:id
+GET http://localhost:5000/markets/5f8187315f65f12464244081
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmMWQxZjcwYTdlYjdjZjgxYjllMDciLCJpYXQiOjE2MDIxOTU3MDV9.XXwEJ6tDRXPrPRYg5hUg4cptBgLPN8ubgar9PnxOj50
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjU2NDJ9.syV33vuWnDy5WwI_B3PCvsOaKw-bz5gzGFBg164yu6M
 
 ### PUT Market
-PUT http://localhost:5000/markets/:id
+PUT http://localhost:5000/markets/5f8187315f65f12464244081
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjYjFmZDFkNDhmY2QiLCJpYXQiOjE2MDEwMjM3NjF9._nK8zthuQmx_KZbyUdG_CXB8N8k3gDbfY0zN4QPnfsw
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
 
 {
-  "title": "edited Todo title",
-  "description": "edited"
+ "name": "Market002"
 }
 
 ### DELETE Market
