@@ -1,34 +1,34 @@
 ### Register User 1
-POST http://localhost:2000/users/register
+POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-  "username":"aga2",
-  "email": "angga2@yahoo.com",
+  "username":"aga21",
+  "email": "angga21@yahoo.com",
   "password": "pand12"
 }
 
 ### Register User 2
-POST http://localhost:2000/users/register
+POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-  "username":"aga",
+  "username":"aga11",
   "email": "angga@yahoo.com",
   "password": "pand12"
 }
 
 ### Login User 1
-POST http://localhost:2000/users/login
+POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
-  "username": "aga2",
+  "username": "aga21",
   "password": "pand12"
 }
 
 ### Login User 2
-POST http://localhost:2000/users/login
+POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
@@ -36,28 +36,30 @@ Content-Type: application/json
   "password": "pand12"
 }
 
+#================= MARKET ========================
+//bang are u there?
 
-### List Townhall
-GET http://localhost:2000/
+### GET List Market
+GET http://localhost:5000/markets/
 Content-Type: application/json
-access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmOWI5NGRkYWZkMTMzODRkM2MxM2MiLCJpYXQiOjE2MDIyMzg3Nzl9.BzhukdjOe_Z_2cB1c5rvVTXzjMXex6SdKU9EIuPPgDk
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgwOTAxNWI3OGM4YjkxODgyNTUzMmIiLCJpYXQiOjE2MDIyOTYzMDR9.2eZKlv9We94AEg7UWxL_S9m1IFK218n1G-ScI1X2Jqc
 
 ### POST Market
-POST http://localhost:4000/markets/
+POST http://localhost:5000/markets/
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmOWI5NGRkYWZkMTMzODRkM2MxM2MiLCJpYXQiOjE2MDIyMzg3Nzl9.BzhukdjOe_Z_2cB1c5rvVTXzjMXex6SdKU9EIuPPgDk
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgwOTAxNWI3OGM4YjkxODgyNTUzMmIiLCJpYXQiOjE2MDIyOTYzMDR9.2eZKlv9We94AEg7UWxL_S9m1IFK218n1G-ScI1X2Jqc
 
 {
- 
+  "name": "Market001"
 }
 
-### GET Market
-GET http://localhost:2000/markets
+### GET by id Market
+GET http://localhost:5000/markets/:id
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdmMWQxZjcwYTdlYjdjZjgxYjllMDciLCJpYXQiOjE2MDIxOTU3MDV9.XXwEJ6tDRXPrPRYg5hUg4cptBgLPN8ubgar9PnxOj50
 
 ### PUT Market
-PUT http://localhost:2000/markets/5f6db1c543bf8b2a2b0981ec
+PUT http://localhost:5000/markets/:id
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjYjFmZDFkNDhmY2QiLCJpYXQiOjE2MDEwMjM3NjF9._nK8zthuQmx_KZbyUdG_CXB8N8k3gDbfY0zN4QPnfsw
 
@@ -67,6 +69,6 @@ access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjY
 }
 
 ### DELETE Market
-DELETE http://localhost:2000/markets/5f6db1c543bf8b2a2b0981ec
+DELETE http://localhost:5000/markets/:id
 Content-Type: application/json
 access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjYjFmZDFkNDhmY2QiLCJpYXQiOjE2MDEwMjM3NjF9._nK8zthuQmx_KZbyUdG_CXB8N8k3gDbfY0zN4QPnfsw

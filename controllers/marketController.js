@@ -3,44 +3,67 @@ const User = require('../models/User');
 
 class MarketController {
   static list(req, res, next) {
-    Market.find({ _userId: req._id })
+    Market.find({
+        _userId: req._id
+      })
       .then((markets) => {
-        res.status(200).json({ success: true, data: markets });
+        res.status(200).json({
+          success: true,
+          data: markets
+        });
+      })
+      .catch(next);
+  }
+ 
+
+  static post(req, res, next) {
+    // console.log(req._id)
+    User.findById({
+        _userId: req._userId
+      })
+      .then((user) => {
+        console.log(user)
+        if (user) {
+          console.log(user)
+          if (user.resources.golds >= 30 && user.resources.foods >= 10) {
+            const resources = user.resources;
+            resources.golds -= 30;
+            resources.foods -= 10;
+            return User.updateOne({
+              _id: req._userId
+            }, {
+              resources: resources
+            });
+          } else {
+            throw (next)
+          }
+        } else {
+          throw (next)
+        }
+      })
+      .then((_) => {
+        const {
+          name
+        } = req.body;
+        const market = new Market({
+          _userId: req._userId,
+          name,
+        });
+        return market.save();
+      })
+      .then((market) => {
+        res.status(200).json({
+          success: true,
+          data: market
+        });
       })
       .catch(next);
   }
 
-  static post(req, res, next) {
-    console.log(req._id)
-    User.findById({_userId: req._id})
-      .then((user) => {
-        if (user) {
-          if (user.resources.golds >= 30 && user.resources.foods >= 10) {
-            const resources = user.resources;
-            console.log(resources)
-            resources.golds -= 30;
-            resources.foods -= 10;
-            return User.updateOne({ _id: req._id }, { resources: resources });
-          } else {
-            throw 'NOT_ENOUGH';
-          }
-        } else {
-          throw 'NOT_FOUND';
-        }
-      })
-      .then((_) => {
-        const { name } = req.body;
-        const market = new Market({ _userId: req._id, name });
-        return market.save();
-      })
-      .then((market) => {
-        res.status(200).json({ success: true, data: market });
-      })
-      .catch(next);
-  }
-  
   static get(req, res, next) {
-    const { id } = req.params;
+    const {
+      id
+    } = req.params;
     Market.findById(id)
       .then((market) => {
         if (market) {
@@ -58,8 +81,12 @@ class MarketController {
   }
 
   static put(req, res, next) {
-    const { id } = req.params;
-    const { name } = req.body;
+    const {
+      id
+    } = req.params;
+    const {
+      name
+    } = req.body;
     Market.findById(id)
       .then((market) => {
         if (market) {
@@ -70,13 +97,18 @@ class MarketController {
         }
       })
       .then((market) => {
-        res.status(200).json({ succes: true, data: market });
+        res.status(200).json({
+          succes: true,
+          data: market
+        });
       })
       .catch(next);
   }
 
   static delete(req, res, next) {
-    const { id } = req.params;
+    const {
+      id
+    } = req.params;
     Market.findById(id)
       .then((market) => {
         if (market) {
@@ -86,15 +118,19 @@ class MarketController {
         }
       })
       .then((market) => {
-        res
-          .status(200)
-          .json({ succes: true, message: 'Market deleted', data: market });
+        res.status(200).json({
+          succes: true,
+          message: 'Market deleted',
+          data: market
+        });
       })
       .catch(next);
   }
 
   static collect(req, res, next) {
-    const { id } = req.params;
+    const {
+      id
+    } = req.params;
     let golds;
     Market.findById(id)
       .then((market) => {
@@ -113,7 +149,11 @@ class MarketController {
       .then((user) => {
         const resources = user.resources;
         resources.golds += golds;
-        return User.updateOne({ _id: req._id }, { resources: resources });
+        return User.updateOne({
+          _id: req._id
+        }, {
+          resources: resources
+        });
       })
       .then((result) => {
         res.status(200).json({

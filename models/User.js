@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
@@ -15,32 +15,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     min: [6, 'Too few pass'],
     max: 12,
-    required: true
+    required: true,
   },
   resources: {
-    golds: {
-      type: Number,
-      default: 100
-    },
-    foods: {
-      type: Number,
-      default: 100
-    },
-    soldiers: {
-      type: Number,
-      default: 0
-    },
+    golds: { type: Number, default: 100 },
+    foods: { type: Number, default: 100 },
+    soldiers: { type: Number, default: 0 },
   },
 });
 
-//use schema pre for save register
-userSchema.pre('save', function (next){
-  User.findOne({
-      email: this.email
-    })
+userSchema.pre('save', function (next) {
+  User.findOne({ email: this.email })
     .then((user) => {
       if (user) {
-        next({name: 'EMAIL_ALREADY_EXISTS'});
+        next({ name: 'EMAIL_ALREADY_EXISTS' });
       } else {
         this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
         next();

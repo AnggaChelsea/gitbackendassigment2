@@ -4,18 +4,15 @@ const jwt = require('jsonwebtoken');
 
 class UserController {
   static register(req, res, next) {
-    const {
-      username,
-      email,
-      password
-    } = req.body;
+    const { username, email, password } = req.body;
     const user = new User({
       username,
       email,
       password,
-    })
-    console.log(user)
-    user.save()
+    });
+    
+    user
+      .save()
       .then((user) => {
         res.status(201).json({
           message: `welcome  ${user.username} hope enjoy play`,
@@ -26,25 +23,14 @@ class UserController {
 
   //login menggunakan Username
   static login(req, res, next) {
-    const {
-      username,
-      password
-    } = req.body;
-    User.findOne({
-        username
-      })
+    const { username, password } = req.body;
+    User.findOne({ username })
       .then((user) => {
+        console.log(user);
         if (user && bcrypt.compareSync(password, user.password)) {
-          const access_token = jwt.sign({
-            _id: user._id
-          }, 'ANGGALESMANA');
-          res.status(200).json({
-            success: true,
-            access_token
-          });
-        } else {
-          throw { name: 'LOGIN_FAIL'}
-        }
+          const access_token = jwt.sign({ _id: user._id }, 'ANGGALESMANA');
+          res.status(200).json({ success: true, access_token });
+        } else throw { name: 'LOGIN_FAIL' };
       })
       .catch(next);
   }
