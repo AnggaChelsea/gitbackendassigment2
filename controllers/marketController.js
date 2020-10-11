@@ -86,7 +86,9 @@ class MarketController {
     const {
       name
     } = req.body;
-    Market.findOne({_id: req.params.id})
+    Market.findOne({
+        _id: req.params.id
+      })
       .then((market) => {
         if (market) {
           market.name = name;
@@ -105,7 +107,9 @@ class MarketController {
   }
 
   static delete(req, res, next) {
-    Market.findOne({_id: req.params.id})
+    Market.findById({
+        _id: req.params.id
+      })
       .then((market) => {
         return market.remove();
       })
@@ -118,6 +122,28 @@ class MarketController {
       })
       .catch(next);
   }
+
+
+  static goldAdd(req, res, next) {
+    const {
+      Id
+    } = req.params;
+    Market.findById(Id)
+      .then((market) => {
+        if (market) {
+          const golds = Math.floor((Date.now() - market.lastCollected) / 60000);
+          res.status(200).json({
+            success: true,
+            data: market,
+            golds: golds > 50 ? 50 : golds,
+          });
+        } else {
+          throw 'Not_Found';
+        }
+      })
+      .catch(next);
+  }
+
 
   static collect(req, res, next) {
     const {

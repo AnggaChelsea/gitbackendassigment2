@@ -61,25 +61,72 @@ class BarrackController {
   }
 
   //get by id
-  static getById(req, res, next) {
-    const id = req.params;
-    Barrack.findById({
-        _id: id
-      })
+  static barrackcollected(req, res, next) {
+    let soldiers;
+    Barrack.findById(req.params.Id)
       .then((barrack) => {
         if (barrack) {
-          // const soldiers = Math.floor((Date.now() - barrack.lastCollected) / 60000);
-          // res.status(200).json({
-          // 	success: true,
-          // 	message: `this your data ${barrack} `,
-          // 	soldiers: soldiers > 10 ? 10 : soldiers
-          // });
-          res.status(200).json({
-            message: 'i got u'
-          })
+          soldiers = Math.floor((Date.now() - barrack.lastCollected) / 60000);
+          soldiers = soldiers > 10 ? 10 : soldiers; //
+          barrack.lastCollected = Date.now();
+          return barrack.save();
         } else {
-          throw 'NOT_FOUND'
+          throw "NOT_FOUND";
         }
+      })
+      .then((barrack) => {
+        return User.findById(req._userId);
+      })
+      .then((user) => {
+        console.log(user);
+        const resources = user.resources;
+        resources.soldiers += soldiers;
+        return User.findOneAndUpdate(
+          { _id: req._userId },
+          { resources: resources }
+        );
+      })
+      .then((result) => {
+        res.status(200).json({
+          success: true,
+          message: `${soldiers} soldiers has been added to your resources`,
+        });
+      })
+      .catch(next);
+  }
+
+  static changebarrack(req, res, next) {
+    const { nameBarrack } = req.body;
+    Barrack.findById(req.params.Id)
+      .then((barrack) => {
+        console.log(barrack);
+        if (barrack) {
+          barrack.nameBarrack = nameBarrack;
+          return barrack.save();
+        } else {
+          throw "Not_Found";
+        }
+      })
+      .then((barrack) => {
+        res.status(200).json({ success: true, data: barrack });
+      })
+      .catch(next);
+  }
+
+  static Put(req, res, next) {
+    const { nameBarrack } = req.body;
+    Barrack.findById(req.params.Id)
+      .then((barrack) => {
+        console.log(barrack);
+        if (barrack) {
+          barrack.nameBarrack = nameBarrack;
+          return barrack.save();
+        } else {
+          throw "Not_Found";
+        }
+      })
+      .then((barrack) => {
+        res.status(200).json({ success: true, data: barrack });
       })
       .catch(next);
   }
