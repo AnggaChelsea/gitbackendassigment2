@@ -458,6 +458,30 @@ not needed
 ```
 #Attack
 
+
+#### Request Body
+
+| Field             |  Type  | Constraint | Required |
+| :-------          | :----: | :--------- | :------: |
+| acces_token       | String | -          |   True   |
+| soldiers          | Number | -          |   True   |
+
+_Example:_
+
+```json
+{
+    "soldiers":0
+}
+```
+
+### Respon
+
+```json
+{
+    message:NOT ENOUGH
+}
+```
+
 #### post attack request bosy
 
 ```json
