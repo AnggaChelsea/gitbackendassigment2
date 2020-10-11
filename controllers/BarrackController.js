@@ -1,4 +1,3 @@
-
 const Barrack = require('../models/Barrack');
 const User = require('../models/User');
 
@@ -19,10 +18,10 @@ class BarrackController {
               resources: resources
             })
           } else {
-            throw (next)
+            throw 'NOT_ENOUGH'
           }
         } else {
-          throw (next)
+          throw 'NOT_FOUND'
         }
       })
       .then((_) => {
@@ -44,9 +43,45 @@ class BarrackController {
       .catch(next);
   }
 
-  static get(req,res,next){
-    const {id} = req.params;
-    
+  //get list barrack
+  static get(req, res, next) {
+    const {
+      id
+    } = req.params;
+    Barrack.find({
+      _userId: req._userId
+    })
+      .then((barrack) => {
+        res.status(200).json({
+          success: true,
+          message: barrack
+        })
+      })
+      .catch(next);
+  }
+
+  //get by id
+  static getById(req, res, next) {
+    const id = req.params;
+    Barrack.findById({
+        _id: id
+      })
+      .then((barrack) => {
+        if (barrack) {
+          // const soldiers = Math.floor((Date.now() - barrack.lastCollected) / 60000);
+          // res.status(200).json({
+          // 	success: true,
+          // 	message: `this your data ${barrack} `,
+          // 	soldiers: soldiers > 10 ? 10 : soldiers
+          // });
+          res.status(200).json({
+            message: 'i got u'
+          })
+        } else {
+          throw 'NOT_FOUND'
+        }
+      })
+      .catch(next);
   }
 
 }

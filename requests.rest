@@ -1,86 +1,71 @@
-### Register User 1
-POST http://localhost:5000/users/register
+
+### Login User 1
+POST http://localhost:5000/attacks/5f83186c0d4ea94c525d0f7f
 Content-Type: application/json
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMTg2YzBkNGVhOTRjNTI1ZDBmN2YiLCJpYXQiOjE2MDI0MjY5OTl9.HQdnearVDdKlrA_FkGA-QTIiGe_kcjWAHrUGA5bDQvI
 
 {
-  "username":"angga2",
-  "email": "anga@yahoo.com",
-  "password": "angga"
+  "soliders":100,
 }
+
 
 ### Register User 2
 POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-  "username":"aga111",
-  "email": "angga111@yahoo.com",
+  "username":"anggaupdate",
+  "email": "angga4@yahoo.com",
   "password": "angga"
 }
 
-### Login User 1
-POST http://localhost:5000/users/login
-Content-Type: application/json
-
-{
-  "username": "angga2",
-  "password": "angga"
-}
 
 ### Login User 2
-POST http://localhost:5000/users/login
+POST http://localhost:5000/attacks/5f83186c0d4ea94c525d0f7f
 Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMTg2YzBkNGVhOTRjNTI1ZDBmN2YiLCJpYXQiOjE2MDI0MjY5OTl9.HQdnearVDdKlrA_FkGA-QTIiGe_kcjWAHrUGA5bDQvI
 
 {
-  "username": "angga",
-  "password": "angga"
+  "soliders":0
 }
 
 ### GET Townhall
 GET http://localhost:5000/
 Content-Type: application/json
-access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjU2NDJ9.syV33vuWnDy5WwI_B3PCvsOaKw-bz5gzGFBg164yu6M
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgyODViZDdlZDZhNGM2MDZjNGY3ZDYiLCJpYXQiOjE2MDI0MjUwMTd9.KJsLZWULc_muUw_3KrgGjbgYlJ5mGAqXyVS1ToYXnjU
 
 #================= MARKET ========================
 
 ### GET List Market
 GET http://localhost:5000/markets
 Content-Type: application/json
-access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
-
-### POST Market
-POST http://localhost:5000/barrack/
-Content-Type: application/json
-access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
-
-{
-  "nameBarrack": "Market003"
-}
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMTg2YzBkNGVhOTRjNTI1ZDBmN2YiLCJpYXQiOjE2MDI0MjY5OTl9.HQdnearVDdKlrA_FkGA-QTIiGe_kcjWAHrUGA5bDQvI
 
 ### POST Market
 POST http://localhost:5000/markets/
 Content-Type: application/json
-access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMTg2YzBkNGVhOTRjNTI1ZDBmN2YiLCJpYXQiOjE2MDI0MjY5OTl9.HQdnearVDdKlrA_FkGA-QTIiGe_kcjWAHrUGA5bDQvI
 
 {
-  "name": "Market001"
+  "name": "MarketAnggasusah"
 }
 
 ### GET by id Market
-GET http://localhost:5000/markets/5f8187315f65f12464244081
+GET http://localhost:5000/markets/5f831b9de93ece509abbf341
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxOWU5MDQ2NGJmZjJiMWZmZjIwNjciLCJpYXQiOjE2MDIzMzAyNjN9.-0WQYsfQ0AZHeMOPWnqatQ4t8Za68iqFJkuZS6l4V6M
+access_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMTg2YzBkNGVhOTRjNTI1ZDBmN2YiLCJpYXQiOjE2MDI0MjY5OTl9.HQdnearVDdKlrA_FkGA-QTIiGe_kcjWAHrUGA5bDQvI
 
 ### PUT Market
-PUT http://localhost:5000/markets/5f8187315f65f12464244081
+PUT http://localhost:5000/markets/5f8318a40d4ea94c525d0f80
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgxODY5ZjVmNjVmMTI0NjQyNDQwODAiLCJpYXQiOjE2MDIzMjQxNDh9.LNl77rnskLqoqdqbirv69RcJKcoetigjzWclOEZJzKg
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMTg2YzBkNGVhOTRjNTI1ZDBmN2YiLCJpYXQiOjE2MDI0MjY5OTl9.HQdnearVDdKlrA_FkGA-QTIiGe_kcjWAHrUGA5bDQvI
 
 {
- "name": "Market002"
+ "name": "Market0042Update"
 }
 
 ### DELETE Market
-DELETE http://localhost:5000/markets/:id
+DELETE http://localhost:5000/markets/5f831b9de93ece509abbf341
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkYTVjYTYzYjNjYjFmZDFkNDhmY2QiLCJpYXQiOjE2MDEwMjM3NjF9._nK8zthuQmx_KZbyUdG_CXB8N8k3gDbfY0zN4QPnfsw
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMTg2YzBkNGVhOTRjNTI1ZDBmN2YiLCJpYXQiOjE2MDI0MjY5OTl9.HQdnearVDdKlrA_FkGA-QTIiGe_kcjWAHrUGA5bDQvI
+

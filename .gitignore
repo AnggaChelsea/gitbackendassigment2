@@ -1,4 +1,5 @@
 node_modules
 config
-requests.res
-github
+.vscode
+package.json
+requests.rest

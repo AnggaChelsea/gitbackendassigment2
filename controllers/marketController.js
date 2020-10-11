@@ -2,9 +2,10 @@ const Market = require('../models/Marketuser');
 const User = require('../models/User');
 
 class MarketController {
+  //get list market
   static listMarket(req, res, next) {
-    User.findById({
-        _id: req._userId
+    Market.find({
+        _userId: req._userId
       })
       .then((markets) => {
         res.status(200).json({
@@ -13,7 +14,6 @@ class MarketController {
         });
       })
       .catch(next);
-    // res.status(200).json({message:'oke'})
   }
 
 
@@ -35,10 +35,10 @@ class MarketController {
               resources: resources
             });
           } else {
-            throw (next)
+            throw 'NOT_ENOUGH';
           }
         } else {
-          throw (next)
+          throw 'NOT_FOUND';
         }
       })
       .then((_) => {
@@ -62,11 +62,11 @@ class MarketController {
 
   static get(req, res, next) {
     const {
-      id
+      _id
     } = req.params;
-    Market.findOne({
-        _id: id
-      })
+    Market.findOne(
+        id
+      )
       .then((market) => {
         if (market) {
           const golds = Math.floor((Date.now() - market.lastCollected) / 60000);
@@ -84,12 +84,9 @@ class MarketController {
 
   static put(req, res, next) {
     const {
-      id
-    } = req.params;
-    const {
       name
     } = req.body;
-    Market.findById(id)
+    Market.findOne({_id: req.params.id})
       .then((market) => {
         if (market) {
           market.name = name;
@@ -108,16 +105,9 @@ class MarketController {
   }
 
   static delete(req, res, next) {
-    const {
-      id
-    } = req.params;
-    Market.findById(id)
+    Market.findOne({_id: req.params.id})
       .then((market) => {
-        if (market) {
-          return market.remove();
-        } else {
-          throw 'NOT_FOUND';
-        }
+        return market.remove();
       })
       .then((market) => {
         res.status(200).json({

@@ -25,6 +25,10 @@ module.exports = (err, req, res, next) => {
       code = 401;
       message = 'Invalid access token!';
       break;
+    case 'NOT_ENOUGH':
+      code = 401;
+      message = 'yours Not enough';
+      break;
     case 'NOT_FOUND':
       code = 404;
       message = 'Resource not found!';
