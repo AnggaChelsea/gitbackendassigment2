@@ -1,7 +1,6 @@
-# eCommerce App Server
+# Assigment2 Backend Expressjs mongoose pembuatan game Clash Of Village
 
-eCommerce is an application to manage products for web store. This app has:
-
+this game a lot of attack system and CRUD system 
 -   RESTful endpoint for asset's CRUD operation with JSON formatted request & response
 
 Before running this app, please adding the following environment variables:
@@ -32,11 +31,11 @@ Before running this app, please adding the following environment variables:
 
 #### Response (403 - Forbidden)
 
-> This error describes resources access attempt by unprivileged user
+> This error describes resources access attempt by userId
 
 ```json
 {
-    "message": "No access!"
+    "message": "FORBIDDEN!"
 }
 ```
 
@@ -84,19 +83,19 @@ no needed
 
 #### Request Body
 
-| Field    |  Type  | Constraint    | Required |
-| :------- | :----: | :------------ | :------: |
-| email    | String | email format  |   True   |
-| password | String | 4 - 32        |   True   |
-| role     | String | admin \| user |   True   |
+| Field         |  Type  | Constraint       | Required |
+| :-------      | :----: | :------------    | :------: |
+| username      | String | username format  |   True   |
+| email         | String | email format     |   True   |
+| password      | String | 4 - 32           |   True   |
 
 _Example:_
 
 ```json
 {
+    "username":"angga1",
     "email": "user@example.com",
     "password": "password",
-    "role": "admin"
 }
 ```
 
@@ -104,6 +103,7 @@ _Example:_
 
 ```json
 {
+    "succes":true
     "message": "User registration success!"
 }
 ```
@@ -116,9 +116,6 @@ _Example:_
         "Email must not be null!",
         "Email must be valid!",
         "Password must not be null",
-        "Password length from 4 to 32 characters!",
-        "Role must not be null!",
-        "Role must be either admin or user!"
     ]
 }
 ```
@@ -127,7 +124,7 @@ _Example:_
 
 ```json
 {
-    "message": "Email already registered, please use another email!"
+    "message": "Email or username already Exist, please use another email!"
 }
 ```
 
@@ -145,16 +142,16 @@ no needed
 
 #### Request Body
 
-| Field    |  Type  | Constraint | Required |
-| :------- | :----: | :--------- | :------: |
-| email    | String | -          |   True   |
-| password | String | -          |   True   |
+| Field         |  Type  | Constraint | Required |
+| :-------      | :----: | :--------- | :------: |
+| username      | String | -          |   True   |
+| password      | String | -          |   True   |
 
 _Example:_
 
 ```json
 {
-    "email": "user@example.com",
+    "username": "angga",
     "password": "password"
 }
 ```
@@ -163,6 +160,7 @@ _Example:_
 
 ```json
 {
+    "data":"oke result"
     "access_token": "<access_token>"
 }
 ```
@@ -211,11 +209,11 @@ _Example:_
 
 --- -->
 
-## Product
+## Market
 
-### POST /products
+### POST / market
 
-> Create new product
+> Create new market
 
 #### Request Header
 
@@ -229,21 +227,14 @@ _Example:_
 
 | Field     |  Type   | Constraint  | Required |
 | :-------- | :-----: | :---------- | :------: |
-| name      | String  | 4-255 chars |   True   |
-| image_url |  Text   | URL format  |   True   |
-| price     | Integer | min 1000    |   True   |
-| stock     | Integer | min 0       |   True   |
-| category  | String  | 1-255 chars |  False   |
+| name      | String  |             |   True   |
+
 
 _Example:_
 
 ```json
 {
-    "name": "Product Name",
-    "image_url": "<image_url>",
-    "price": 1000,
-    "stock": 1,
-    "category": "product"
+    "name": "My Market",
 }
 ```
 
@@ -251,17 +242,14 @@ _Example:_
 
 ```json
 {
-    "data": {
-        "id": 1,
-        "UserId": 1,
-        "name": "Product Name",
-        "image_url": "<image_url>",
-        "price": 1000,
-        "stock": 1,
-        "category": "product",
-        "updatedAt": "2020-06-23T12:09:04.569Z",
-        "createdAt": "2020-06-23T12:09:04.569Z"
-    }
+    "data": [
+    {
+      "lastCollected": 1602426749538,
+      "_id": "5f8318a40d4ea94c525d0f80",
+      "_userId": "5f83186c0d4ea94c525d0f7f",
+      "name": "MarketAngga4",
+      "__v": 0
+    },
 }
 ```
 
@@ -270,26 +258,16 @@ _Example:_
 ```json
 {
     "message": [
-        "Name must not be null!",
-        "Name must be 4 to 255 characters!",
-        "Image URL must not be null!",
-        "Image URL must be valid URL!",
-        "Price must not be null!",
-        "Price must be greater than 1000!",
-        "Stock must not be null!",
-        "Stock must be equal or greater than 0!",
-        "Stock must be integer!",
-        "category must not be null!",
-        "Category must be 1 to 255 characters!"
+        "server_error!",
     ]
 }
 ```
 
 ---
 
-### GET /products
+### GET /market
 
-> Get all products
+> Get all market
 
 ```json
 {
@@ -308,46 +286,27 @@ no needed
 ```json
 {
     "data": [
-        {
-            "id": 1,
-            "UserId": 1,
-            "name": "Product Name 1",
-            "image_url": "<image_url>",
-            "price": 1000,
-            "stock": 11,
-            "category": "furniture",
-            "createdAt": "2020-06-22T15:05:49.637Z",
-            "updatedAt": "2020-06-22T15:05:49.637Z"
-        },
-        {
-            "id": 2,
-            "UserId": 1,
-            "name": "Product Name 2",
-            "image_url": "<image_url>",
-            "price": 2000,
-            "stock": 12,
-            "category": "fashion",
-            "createdAt": "2020-06-22T15:05:50.769Z",
-            "updatedAt": "2020-06-22T15:05:50.769Z"
-        },
-        {
-            "id": 3,
-            "UserId": 2,
-            "name": "Product Name 3",
-            "image_url": "<image_url>",
-            "price": 3000,
-            "stock": 13,
-            "category": "gadget",
-            "createdAt": "2020-06-22T15:05:50.769Z",
-            "updatedAt": "2020-06-22T15:05:50.769Z"
-        }
+    {
+      "lastCollected": 1602426749538,
+      "_id": "5f8318a40d4ea94c525d0f80",
+      "_userId": "5f83186c0d4ea94c525d0f7f",
+      "name": "MarketAngga4",
+      "__v": 0
+    },
+    {
+      "lastCollected": 1602427693334,
+      "_id": "5f831b9de93ece509abbf341",
+      "_userId": "5f83186c0d4ea94c525d0f7f",
+      "name": "MarketAnggasusah",
+      "__v": 0
+    }
     ]
 }
 ```
 
 ---
 
-### GET /products/:id
+### GET /market/:id
 
 > Get single product
 
@@ -355,12 +314,12 @@ no needed
 
 | name |  Type   | Constraint | Required |
 | :--- | :-----: | :--------- | :------: |
-| id   | Integer | Product ID |   True   |
+| id   | Integer | marker ID  |   True   |
 
 _Example URI:_
 
 ```text
-/products/123
+/market/123
 ```
 
 #### Request Header
@@ -380,22 +339,22 @@ no needed
 #### Response (200 - OK)
 
 ```json
-{
-    "id": 1,
-    "UserId": 1,
-    "name": "Product Name 1",
-    "image_url": "<image_url>",
-    "price": 1000,
-    "stock": 11,
-    "category": "furniture",
-    "createdAt": "2020-06-22T15:05:49.637Z",
-    "updatedAt": "2020-06-22T15:05:49.637Z"
+
+  "data": [
+  {
+      "lastCollected": 1602426749538,
+      "_id": "5f8318a40d4ea94c525d0f80",
+      "_userId": "5f83186c0d4ea94c525d0f7f",
+      "name": "MarketAngga4",
+      "__v": 0
+      "createdAt": "2020-06-22T15:05:49.637Z",
+      "updatedAt": "2020-06-22T15:05:49.637Z"
 },
 ```
 
 ---
 
-### PUT /products/products/:id
+### PUT /markets/:id
 
 > Update single product
 
@@ -408,7 +367,7 @@ no needed
 _Example URI:_
 
 ```text
-/products/123
+/market/123
 ```
 
 #### Request Header
@@ -424,39 +383,28 @@ _Example URI:_
 | Field     |  Type   | Constraint  | Required |
 | :-------- | :-----: | :---------- | :------: |
 | name      | String  | 4-255 chars |   True   |
-| image_url |  Text   | URL format  |   True   |
-| price     | Integer | min 1000    |   True   |
-| stock     | Integer | min 0       |   True   |
-| category  | String  | 1-255 chars |  False   |
 
 _Example:_
 
 ```json
 {
-    "name": "Product Name Updated",
-    "image_url": "<image_url>",
-    "price": 1000,
-    "stock": 1,
-    "category": "updated"
+    "name": "marketz name Updated",
 }
 ```
 
 #### Response (200 - OK)
 
 ```json
-{
-    "data": {
-        "id": 1,
-        "UserId": 1,
-        "name": "Product Name Updated",
-        "image_url": "<image_url>",
-        "price": 1000,
-        "stock": 1,
-        "category": "updated",
-        "updatedAt": "2020-06-23T12:09:04.569Z",
-        "createdAt": "2020-06-23T12:09:04.569Z"
-    }
-}
+"data": [
+  {
+      "lastCollected": 1602426749538,
+      "_id": "5f8318a40d4ea94c525d0f80",
+      "_userId": "5f83186c0d4ea94c525d0f7f",
+      "name": "MarketAngga4",
+      "__v": 0
+      "createdAt": "2020-06-22T15:05:49.637Z",
+      "updatedAt": "2020-06-22T15:05:49.637Z"
+},
 ```
 
 #### Response (400 - Bad Request)
@@ -464,17 +412,7 @@ _Example:_
 ```json
 {
     "message": [
-        "Name must not be null!",
-        "Name must be 4 to 255 characters!",
-        "Image URL must not be null!",
-        "Image URL must be valid URL!",
-        "Price must not be null!",
-        "Price must be greater than 1000!",
-        "Stock must not be null!",
-        "Stock must be equal or greater than 0!",
-        "Stock must be integer!",
-        "category must not be null!",
-        "Category must be 1 to 255 characters!"
+        "server_error",
     ]
 }
 ```
@@ -494,7 +432,7 @@ _Example:_
 _Example URI:_
 
 ```text
-/products/123
+/market/123
 ```
 
 #### Request Header
@@ -515,7 +453,7 @@ not needed
 
 ```json
 {
-    "message": "Product deletion success!"
+    "message": "marketz deletion success!"
 }
 ```
 
